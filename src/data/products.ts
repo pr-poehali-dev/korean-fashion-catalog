@@ -32,6 +32,7 @@ export const products: Product[] = [
     color: "Синий",
     image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/dd40c7eb-4d18-4c3f-b9a2-eb810b4d1aa8.jpg",
     images: [
+      "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/98f92446-8667-46a0-9766-4b983fc3f4bd.jpg",
       "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/dd40c7eb-4d18-4c3f-b9a2-eb810b4d1aa8.jpg",
       "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/f6d3d233-347b-46da-acaa-2f544f8bc549.jpg",
       "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/8379899e-04e2-45fc-b834-3ebd2d2f6cae.jpg",

@@ -126,8 +126,7 @@ export default function HomePage({ setPage, addToCart, cartCount }: HomePageProp
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="font-oswald text-brand-red text-xs tracking-[0.3em] mb-2">КОЛЛЕКЦИЯ</p>
-            <h2 className="font-oswald text-4xl font-bold text-brand-white">НОВИНКИ</h2>
+            <h2 className="font-oswald text-4xl font-bold text-brand-white">КАТАЛОГ</h2>
           </div>
           <button
             onClick={() => setPage("catalog")}
@@ -136,7 +135,7 @@ export default function HomePage({ setPage, addToCart, cartCount }: HomePageProp
             ВСЕ ТОВАРЫ <Icon name="ArrowRight" size={14} />
           </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           {featured.map((product, i) => (
             <div
               key={product.id}
