@@ -43,7 +43,7 @@ export default function App() {
       <Toaster />
       <div className="min-h-screen bg-brand-black text-brand-white">
         <Navbar page={page} setPage={setPage} cartCount={cartCount} />
-        {page === "home"     && <HomePage setPage={setPage} addToCart={addToCart} />}
+        {page === "home"     && <HomePage setPage={setPage} addToCart={addToCart} cartCount={cartCount} />}
         {page === "catalog"  && <CatalogPage addToCart={addToCart} />}
         {page === "about"    && <AboutPage />}
         {page === "contacts" && <ContactsPage />}

@@ -6,15 +6,24 @@ import Icon from "@/components/ui/icon";
 interface HomePageProps {
   setPage: (p: Page) => void;
   addToCart: (item: Omit<CartItem, "qty">) => void;
+  cartCount: number;
 }
+
+const links: { label: string; page: Page }[] = [
+  { label: "ГЛАВНАЯ", page: "home" },
+  { label: "КАТАЛОГ", page: "catalog" },
+  { label: "О БРЕНДЕ", page: "about" },
+  { label: "БЛОГ", page: "blog" },
+  { label: "КОНТАКТЫ", page: "contacts" },
+];
 
 const marqueeItems = ["МЕСТНЫЕ", "SEOUL", "STREETWEAR", "KOREA", "LOCAL", "CULTURE", "МЕСТНЫЕ", "SEOUL", "STREETWEAR", "KOREA", "LOCAL", "CULTURE"];
 
-export default function HomePage({ setPage, addToCart }: HomePageProps) {
+export default function HomePage({ setPage, addToCart, cartCount }: HomePageProps) {
   const featured = products.slice(0, 3);
 
   return (
-    <main className="pt-16">
+    <main>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background logo image */}
@@ -69,6 +78,35 @@ export default function HomePage({ setPage, addToCart }: HomePageProps) {
                 className="font-oswald tracking-widest text-sm border border-white/30 text-brand-white px-8 py-3 hover:border-brand-white hover:bg-brand-white/10 transition-all duration-300"
               >
                 ИЗ КОРЕИ
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom nav bar */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-8 md:px-16">
+            <div className="flex items-center justify-between">
+              {links.map((l, i) => (
+                <button
+                  key={l.page}
+                  onClick={() => setPage(l.page)}
+                  className="flex-1 font-oswald text-xs tracking-[0.25em] text-brand-white/40 hover:text-brand-white py-5 text-center transition-colors duration-200 border-r border-white/10 last:border-r-0 hover:bg-white/5"
+                  style={{ animationDelay: `${0.4 + i * 0.06}s` }}
+                >
+                  {l.label}
+                </button>
+              ))}
+              <button
+                onClick={() => setPage("cart")}
+                className="relative flex items-center justify-center py-5 px-6 text-brand-white/40 hover:text-brand-white transition-colors border-l border-white/10 hover:bg-white/5"
+              >
+                <Icon name="ShoppingBag" size={16} />
+                {cartCount > 0 && (
+                  <span className="absolute top-3 right-3 w-3.5 h-3.5 bg-brand-red text-white text-[9px] font-oswald flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </button>
             </div>
           </div>
