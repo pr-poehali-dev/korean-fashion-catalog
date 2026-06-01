@@ -4,6 +4,8 @@ export interface Product {
   price: number;
   category: string;
   image: string;
+  images?: string[];
+  color?: string;
   sizes: string[];
   isNew?: boolean;
   isBest?: boolean;
@@ -24,73 +26,21 @@ export interface Review {
 export const products: Product[] = [
   {
     id: 1,
-    name: "HOODIE SEOUL 001",
-    price: 7900,
-    category: "Худи",
-    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/019ed30d-7d06-40c4-88fa-a6906d490e12.jpg",
-    sizes: ["S", "M", "L", "XL"],
-    isNew: true,
-    description: "Оверсайз-худи из тяжёлого хлопка. Минималистичный дизайн, максимальный комфорт.",
-    rating: 4.8,
-    reviewCount: 24,
-  },
-  {
-    id: 2,
-    name: "TEE LOCAL 002",
-    price: 3900,
-    category: "Футболки",
-    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/446a9f3a-5cfc-47a0-bb63-ce3cfc89dc7b.jpg",
+    name: "Женское платье МЕСТНЫЕ",
+    price: 6500,
+    category: "Платья",
+    color: "Синий",
+    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/dd40c7eb-4d18-4c3f-b9a2-eb810b4d1aa8.jpg",
+    images: [
+      "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/dd40c7eb-4d18-4c3f-b9a2-eb810b4d1aa8.jpg",
+      "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/f6d3d233-347b-46da-acaa-2f544f8bc549.jpg",
+      "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/8379899e-04e2-45fc-b834-3ebd2d2f6cae.jpg",
+    ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    isBest: true,
-    description: "Базовая футболка с фирменным принтом. 100% органический хлопок.",
-    rating: 4.6,
-    reviewCount: 41,
-  },
-  {
-    id: 3,
-    name: "JACKET KR-03",
-    price: 14900,
-    category: "Куртки",
-    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/779b8bb9-e39a-448f-b6aa-5cdeb0018e5f.jpg",
-    sizes: ["S", "M", "L"],
     isNew: true,
-    description: "Лёгкая куртка-ветровка. Идеальна для межсезонья.",
-    rating: 4.9,
-    reviewCount: 17,
-  },
-  {
-    id: 4,
-    name: "PANTS WIDE 004",
-    price: 6900,
-    category: "Брюки",
-    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/446a9f3a-5cfc-47a0-bb63-ce3cfc89dc7b.jpg",
-    sizes: ["S", "M", "L", "XL"],
-    description: "Широкие брюки с эластичным поясом. Свобода движения.",
-    rating: 4.5,
-    reviewCount: 29,
-  },
-  {
-    id: 5,
-    name: "LONGSLEEVE GRID",
-    price: 4900,
-    category: "Лонгсливы",
-    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/019ed30d-7d06-40c4-88fa-a6906d490e12.jpg",
-    sizes: ["S", "M", "L"],
-    isBest: true,
-    description: "Лонгслив с геометрическим принтом. Тонкий, но тёплый.",
-    rating: 4.7,
-    reviewCount: 33,
-  },
-  {
-    id: 6,
-    name: "CAP МЕСТНЫЕ",
-    price: 2900,
-    category: "Аксессуары",
-    image: "https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/779b8bb9-e39a-448f-b6aa-5cdeb0018e5f.jpg",
-    sizes: ["ONE SIZE"],
-    description: "Кепка с вышитым лого. Строгий минимализм.",
-    rating: 4.4,
-    reviewCount: 58,
+    description: "Элегантное женское платье с длинным рукавом. Приталенный силуэт, расклешённый подол. Фирменная нашивка МЕСТНЫЕ на рукаве.",
+    rating: 5.0,
+    reviewCount: 1,
   },
 ];
 
@@ -103,4 +53,4 @@ export const reviews: Review[] = [
   { id: 6, productId: 3, author: "Саша В.", rating: 5, text: "Куртка огонь! Лёгкая, стильная. Уже несколько комплиментов получил.", date: "22 мая 2026" },
 ];
 
-export const categories = ["Все", "Худи", "Футболки", "Куртки", "Брюки", "Лонгсливы", "Аксессуары"];
+export const categories = ["Все", "Платья"];

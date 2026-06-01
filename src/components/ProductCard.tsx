@@ -13,11 +13,13 @@ interface ProductCardProps {
 export default function ProductCard({ product, addToCart, onClick }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState("");
   const [added, setAdded] = useState(false);
+  const [activeImg, setActiveImg] = useState(0);
+  const allImages = product.images?.length ? product.images : [product.image];
 
   const handleAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
     const size = selectedSize || product.sizes[0];
-    addToCart({ id: product.id, name: product.name, price: product.price, size, image: product.image });
+    addToCart({ id: product.id, name: product.name, price: product.price, size, image: allImages[0] });
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   };
@@ -30,10 +32,39 @@ export default function ProductCard({ product, addToCart, onClick }: ProductCard
       {/* Image */}
       <div className="relative overflow-hidden bg-[#111] aspect-[3/4] mb-4">
         <img
-          src={product.image}
+          src={allImages[activeImg]}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
         />
+        {/* Dot nav for multiple images */}
+        {allImages.length > 1 && (
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
+            {allImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={e => { e.stopPropagation(); setActiveImg(i); }}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${i === activeImg ? "bg-white scale-125" : "bg-white/40 hover:bg-white/70"}`}
+              />
+            ))}
+          </div>
+        )}
+        {/* Prev/Next arrows on hover */}
+        {allImages.length > 1 && (
+          <>
+            <button
+              onClick={e => { e.stopPropagation(); setActiveImg(prev => (prev - 1 + allImages.length) % allImages.length); }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/80"
+            >
+              <Icon name="ChevronLeft" size={14} />
+            </button>
+            <button
+              onClick={e => { e.stopPropagation(); setActiveImg(prev => (prev + 1) % allImages.length); }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/80"
+            >
+              <Icon name="ChevronRight" size={14} />
+            </button>
+          </>
+        )}
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1">
           {product.isNew && (
@@ -77,6 +108,9 @@ export default function ProductCard({ product, addToCart, onClick }: ProductCard
       <div>
         <p className="text-xs text-brand-gray font-oswald tracking-widest mb-1">{product.category}</p>
         <h3 className="font-oswald text-base font-medium tracking-wide mb-1 group-hover:text-brand-red transition-colors">{product.name}</h3>
+        {product.color && (
+          <p className="text-xs text-brand-white/40 font-ibm mb-1">Цвет: {product.color}</p>
+        )}
         <div className="flex items-center justify-between">
           <span className="font-ibm text-sm text-brand-white">{product.price.toLocaleString()} ₽</span>
           <div className="flex items-center gap-1">
