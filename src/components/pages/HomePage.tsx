@@ -16,44 +16,59 @@ export default function HomePage({ setPage, addToCart }: HomePageProps) {
   return (
     <main className="pt-16">
       {/* Hero */}
-      <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background logo image */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/files/779b8bb9-e39a-448f-b6aa-5cdeb0018e5f.jpg)` }}
+          className="absolute inset-0 bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/c8524fa2-ca69-454f-a4f8-4c13f8f858b6.jpg)`,
+            backgroundSize: "55%",
+            backgroundPosition: "75% center",
+            opacity: 0.08,
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent" />
-        {/* Big title */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1
-            className="font-oswald text-[18vw] font-bold text-white/5 tracking-widest select-none leading-none animate-fade-in"
-            style={{ letterSpacing: "0.15em" }}
-          >
-            МЕСТНЫЕ
-          </h1>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent" />
+
+        {/* Logo image — right side, large */}
+        <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center pointer-events-none select-none">
+          <img
+            src="https://cdn.poehali.dev/projects/390a4b91-3cbc-43c6-bf2b-263cea2dee2d/bucket/c8524fa2-ca69-454f-a4f8-4c13f8f858b6.jpg"
+            alt="МЕСТНЫЕ"
+            className="w-[80%] max-w-lg object-contain opacity-15 animate-fade-in"
+            style={{ filter: "invert(1)" }}
+          />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full">
-          <div className="max-w-lg animate-fade-in-up opacity-0-init" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
-            <p className="font-oswald text-brand-red text-sm tracking-[0.3em] mb-4">СДЕЛАНО В КОРЕЕ</p>
-            <h2 className="font-oswald text-5xl md:text-7xl font-bold leading-none mb-6 text-brand-white">
-              ОДЕВАЙСЯ<br />
-              <span className="text-brand-red">КАК</span> МЕСТНЫЙ
-            </h2>
-            <p className="font-ibm text-brand-white/60 text-base mb-8 font-light leading-relaxed">
-              Streetwear-бренд из Сеула.<br />Одежда для тех, кто знает, откуда он.
+        {/* Content — left side */}
+        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 w-full">
+          <div
+            className="max-w-xl animate-fade-in-up opacity-0-init"
+            style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
+          >
+            <h1
+              className="font-oswald font-bold text-brand-white leading-none mb-4"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)", letterSpacing: "0.04em" }}
+            >
+              МЕСТНЫЕ
+            </h1>
+            <p
+              className="font-ibm text-brand-white/50 font-light mb-10"
+              style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.15rem)", letterSpacing: "0.08em" }}
+            >
+              Уникальный бренд из России
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap">
               <button
                 onClick={() => setPage("catalog")}
-                className="font-oswald tracking-widest text-sm bg-brand-red text-white px-8 py-3 hover:bg-white hover:text-brand-black transition-all duration-300"
+                className="font-oswald tracking-widest text-sm bg-brand-white text-brand-black px-8 py-3 hover:bg-brand-red hover:text-white transition-all duration-300"
               >
-                СМОТРЕТЬ КАТАЛОГ
+                МЕСТНЫЕ
               </button>
               <button
                 onClick={() => setPage("about")}
-                className="font-oswald tracking-widest text-sm border border-white/30 text-white/70 px-8 py-3 hover:border-white hover:text-white transition-all duration-300"
+                className="font-oswald tracking-widest text-sm border border-white/30 text-brand-white px-8 py-3 hover:border-brand-white hover:bg-brand-white/10 transition-all duration-300"
               >
-                О НАС
+                ИЗ КОРЕИ
               </button>
             </div>
           </div>
